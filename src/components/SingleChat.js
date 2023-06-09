@@ -13,7 +13,8 @@ import UpdateGroupChatModel from "./miscellaneous/UpdateGroupChatModel";
 import axios from "axios";
 import ScrolebleChat from "./ScrolebleChat";
 import io from "socket.io-client";
-const ENDPOINT = "http://localhost:8000";
+const ENDPOINT = "https://chatbot-server-apiendpoint.onrender.com";
+// chenge
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -48,7 +49,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       setLoading(true);
 
       const { data } = await axios.get(
-        `/api/message/${selectedChat._id}`,
+        `https://chatbot-server-apiendpoint.onrender.com/api/message/${selectedChat._id}`,
         config
       );
       setMessage(data);
@@ -129,14 +130,13 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         };
         setNewMessage("");
         const { data } = await axios.post(
-          "/api/message",
+          "https://chatbot-server-apiendpoint.onrender.com/api/message",
           {
             content: newMessage,
             chatId: selectedChat,
           },
           config
         );
-        console.log("the message", data);
         socket.emit("new message", data);
         setMessage([...message, data]);
       } catch (error) {

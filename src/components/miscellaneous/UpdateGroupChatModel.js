@@ -14,11 +14,8 @@ import {
   Box,
   IconButton,
   Spinner,
-  //   Spinner,
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
-// import UserBadgeItem from '../userAvatar/UserBadgeItem';
-// import UserListItem from '../userAvatar/UserListItem';
 import { ViewIcon } from "@chakra-ui/icons";
 import { ChatState } from "../../context/ChatProvider";
 import UserBadgeItem from "../userAvatar/UserBadgeItem";
@@ -47,7 +44,7 @@ const UpdateGroupChatModel = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         },
       };
       const { data } = await axios.put(
-        `http://localhost:8000/api/chat/rename`,
+        `https://chatbot-server-apiendpoint.onrender.com/api/chat/rename`,
         {
           chatId: selectedChat._id,
           chatName: groupChatName,
@@ -56,7 +53,6 @@ const UpdateGroupChatModel = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
       );
 
       console.log(data._id);
-      // setSelectedChat("");
       setSelectedChat(data);
       setFetchAgain(!fetchAgain);
       setRenameLoading(false);
@@ -93,14 +89,13 @@ const UpdateGroupChatModel = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         },
       };
       const { data } = await axios.put(
-        `http://localhost:8000/api/chat/groupremove`,
+        `https://chatbot-server-apiendpoint.onrender.com/api/chat/groupremove`,
         {
           chatId: selectedChat._id,
           userId: user1._id,
         },
         config
       );
-      // const tati = data.users;
       console.log(setSelectedChat);
       console.log("the data : ", data);
 
@@ -112,7 +107,6 @@ const UpdateGroupChatModel = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
     } catch (error) {
       toast({
         title: "Error Occured!",
-        // description: error.response.data.message,
         status: "error",
         duration: 5000,
         isClosable: true,
@@ -137,10 +131,9 @@ const UpdateGroupChatModel = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         },
       };
       const { data } = await axios.get(
-        `http://localhost:8000/api/user?search=${search}`,
+        `https://chatbot-server-apiendpoint.onrender.com/api/user?search=${search}`,
         config
       );
-      //   console.log(data);
       const tati = data.users;
       console.log(tati);
       setLoading(false);
@@ -187,7 +180,7 @@ const UpdateGroupChatModel = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         },
       };
       const { data } = await axios.put(
-        `http://localhost:8000/api/chat/groupadd`,
+        `https://chatbot-server-apiendpoint.onrender.com/api/chat/groupadd`,
         {
           chatId: selectedChat._id,
           userId: user1._id,

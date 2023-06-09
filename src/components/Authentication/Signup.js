@@ -12,7 +12,7 @@ const Signup = () => {
   const [PicLoading, setPicLoading] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
-  const api = "http://localhost:8000/api/user/signup";
+  const api = "https://chatbot-server-apiendpoint.onrender.com/api/user/signup";
 
   // for image uploading
 

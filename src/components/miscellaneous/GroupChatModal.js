@@ -29,7 +29,7 @@ function GroupChatModal({ children }) {
   const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const toast = useToast();
-  const api = `http://localhost:8000/api/user?search=${search}`;
+  const api = `https://chatbot-server-apiendpoint.onrender.com/api/user?search=${search}`;
 
   const { user, chats, setChats } = ChatState();
 
@@ -102,7 +102,7 @@ function GroupChatModal({ children }) {
         },
       };
       const { data } = await axios.post(
-        `http://localhost:8000/api/chat/group`,
+        `https://chatbot-server-apiendpoint.onrender.com/api/chat/group`,
         {
           name: groupChatName,
           users: JSON.stringify(selectedUsers.map((u) => u._id)),

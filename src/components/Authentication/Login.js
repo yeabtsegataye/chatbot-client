@@ -9,7 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
-  const api = "http://localhost:8000/api/user/login";
+  const api = "https://chatbot-server-apiendpoint.onrender.com/api/user/login";
 
   const handle_submit = async (e) => {
     e.preventDefault();

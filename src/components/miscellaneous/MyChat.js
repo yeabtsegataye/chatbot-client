@@ -15,7 +15,6 @@ const MyChat = ({ fetchAgain }) => {
   const toast = useToast();
 
   const fetchChats = async () => {
-    // console.log(user._id);
     try {
       const config = {
         headers: {
@@ -24,7 +23,7 @@ const MyChat = ({ fetchAgain }) => {
       };
 
       const { data } = await axios.get(
-        "http://localhost:8000/api/chat",
+        "https://chatbot-server-apiendpoint.onrender.com/api/chat",
         config
       );
       setChats(data);

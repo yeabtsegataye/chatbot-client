@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { ChatState } from "../../context/ChatProvider";
-// import ProfileModel from "./ProfileModel";
 import { useState } from "react";
 import UserListItem from "../userAvatar/UserListItem";
 import axios from "axios";
@@ -40,7 +39,7 @@ const SlideDrawer = () => {
       return;
     }
     try {
-      const api = `http://localhost:8000/api/user?search=${search}`;
+      const api = `https://chatbot-server-apiendpoint.onrender.com/api/user?search=${search}`;
       const config = {
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -68,14 +67,13 @@ const SlideDrawer = () => {
         },
       };
       const { data } = await axios.post(
-        `http://localhost:8000/api/chat`,
+        `https://chatbot-server-apiendpoint.onrender.com/api/chat`,
         { userId },
         config
       );
       if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
       setSelectedChat(data);
       setLoadingChat(false);
-      // onClose();
     } catch (error) {
       alert(error.message);
       return;
@@ -97,7 +95,7 @@ const SlideDrawer = () => {
 
         <div
           className="offcanvas offcanvas-start"
-          tabindex="-1"
+          tabIndex="-1"
           id="offcanvasExample"
           aria-labelledby="offcanvasExampleLabel"
         >
